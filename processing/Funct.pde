@@ -2,6 +2,7 @@ boolean layouted = false;
 int iters = 0;
 int best = 0;
 float contsPi = 3.14;
+float rDiff = 3.14;// change for ellipse radius in "connected" mode
 
 void restart() {
   for (int i = 0; i < count; i++) {
@@ -25,7 +26,6 @@ void layouts(String type, int index) {
     } else if (type == "cliques") {
       cliquesGraph();
     } else {
-      noLoop();
       noLoop();
       background(51);
       textSize(64);
