@@ -1,6 +1,6 @@
 Osoba[] osoby;
 Slider slider;
-int count = 100;
+int count = 25;
 
 
 void setup() {
@@ -18,7 +18,7 @@ void draw() {
   slider.show();
   for (int i = 0; i < count; i++) {
     osoby[i].show();
-    layouts("group", i); // "connected"/"random"
+    layouts("random", i); // "connected"/"random"/"group"/"clique"
     osoby[i].makeLines();
     osoby[i].plotkaTime();
   }

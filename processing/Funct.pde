@@ -22,6 +22,8 @@ void layouts(String type, int index) {
     } else if (type == "group") {
       groupGraph(index);
       layouted = false;
+    } else if (type == "cliques") {
+      cliquesGraph();
     } else {
       noLoop();
       noLoop();
@@ -31,20 +33,6 @@ void layouts(String type, int index) {
       textAlign(CENTER, DOWN);
       text("Please define a layout!", width/2, height/2);
     }
-  }
-}
-
-void connectedGraph() {
-  for (int i = 1; i < count; i++) {
-    osoby[i].connections[i-1] = i;
-  }
-  osoby[count - 1].connections[0] = 1;
-  for (int i = 0; i < count; i++) {
-    float j = sin(map(i, 0, count, 0, 2 * contsPi));
-    float k = cos(map(i, 0, count, 0, 2 * contsPi));
-    osoby[i].x = map(j * contsPi, 0, 2 * contsPi, 100, (width-100)) + width/2 - 100;
-    osoby[i].y = map(k * contsPi, 0, 2 * contsPi, 100, (height-100)) + height/2 - 100;
-    //println(osoby[i].x);
   }
 }
 
@@ -63,13 +51,4 @@ void iterCount() {
   textAlign(CENTER, DOWN);
   fill(255, 0, 50, 200);
   text("Iterations: " + iters, 100, 50);
-}
-
-void groupGraph(int index) {
-  for (int i = 0; i < count; i++) {
-    osoby[i].allowedDistance = 100;
-    osoby[i].maxConns = 10;
-    osoby[i].size = (osoby[i].nOfConns + 1) * 5;
-  }
-  osoby[index].connect();
 }
